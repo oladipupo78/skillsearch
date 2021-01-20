@@ -1,0 +1,186 @@
+{% extends 'courses/base.html' %}
+{%load static%}
+
+    {%block content%}
+        <div class="page-content">
+            <div class="container">
+
+                <h1> Courses </h1>
+
+                <h4> Browse {{c.field}} <a href="#" class="text-muted">Courses</a> </h4>
+
+                <div class="section-header mb-4">
+                    <div class="section-header-left">
+                        <nav class="responsive-tab style-4">
+                            <ul>
+                                <li class="uk-active"><a href="#">Most popular</a></li>
+                                <li>
+                                    <form id = "newform" method="POST" action="{%url 'newsort'%}" >
+                                        {% csrf_token %}
+                                        <input type="hidden" id="field" name="field" value={{c.name}}>
+                                        <a href="#" onclick="document.getElementById('newform').submit()"> <i class="uil-brush-alt "></i> New </a>
+                                    </form>
+                                </li>
+                                <li>
+                                    <form id = "beginnerform" method="POST" action="{%url 'beginnersort'%}" >
+                                        {% csrf_token %}
+                                        <input type="hidden" id="field2" name="field2" value="{{f}}">
+                                        <a href="#" onclick="document.getElementById('beginnerform').submit()"> <i class="uil-brush-alt "></i>Beginner</a>
+                                    </form>
+                                </li>
+                                <li>
+                                    <form id = "inform" method="POST" action="{%url 'intermediatesort'%}" >
+                                        {% csrf_token %}
+                                        <input type="hidden" id="field3" name="field3" value="{{f}}">
+                                        <a href="#" onclick="document.getElementById('inform').submit()"> <i class="uil-brush-alt "></i>Intermediate</a>
+                                    </form>
+                                </li>
+                               <li>
+                                    <form id = "advancedform" method="POST" action="{%url 'advancedsort'%}" >
+                                        {% csrf_token %}
+                                        <input type="hidden" id="field4" name="field4" value="{{f}}">
+                                        <a href="#" onclick="document.getElementById('beginnerform').submit()"> <i class="uil-brush-alt "></i>Advanced</a>
+                                    </form>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <div class="section-header-right">
+
+                        <div class="display-as">
+                            <a href="courses.html" uk-tooltip="title: Course list; pos: top-right">
+                                <i class="icon-feather-list"></i></a>
+                            <a href="#" class="active" uk-tooltip="title: Course Grid; pos: top-right">
+                                <i class="icon-feather-grid"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="uk-grid-large" uk-grid>
+                    <div class="uk-width-3-4@m">
+                        {%for co in c%}
+                            <div class="course-card course-card-list">
+                                <div class="course-card-thumbnail">
+                                    <img src="{{co.image.url}}" >
+                                     <form method="POST" id="{{co.name}}" action="{%url 'courseintro'%}" class="uk-grid-small" uk-grid >
+                                         {% csrf_token %}
+                                         <input class="uk-input" type="hidden" name="course" id="course" value="{{co.id}}">
+                                         <a href="#" class="play-button-trigger" onclick="document.getElementById('{{co.name}}').submit()"></a>
+                                     </form>
+                                </div>
+                                <div class="course-card-body">
+                                    <a href="course-intro.html">
+                                        <h4>{{co.name}} </h4>
+                                    </a>
+                                    <p>{{co.description}}</p>
+                                    <div class="course-details-info">
+                                        <ul>
+                                            <li> <i class="icon-feather-sliders"></i> {{co.level}} </li>
+                                            <li> By <a href="user-profile-1.html">{{co.description}} </a> </li>
+                                            <li>
+                                                <div class="star-rating"><span class="avg"> 4.8 </span> <span
+                                                        class="star"></span><span class="star"></span><span
+                                                        class="star"></span><span class="star"></span><span
+                                                        class="star"></span>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+
+                                </div>
+                            </div>
+                        {%endfor%}
+                        <!-- pagination menu -->
+                        <ul class="uk-pagination my-5 uk-flex-center" uk-margin>
+                            <li><a href="#"><span uk-pagination-previous></span></a></li>
+                            <li class="uk-disabled"><span>...</span></li>
+                            <li><a href="#">4</a></li>
+                            <li class="uk-active"><span>7</span></li>
+                            <li><a href="#">8</a></li>
+                            <li><a href="#">10</a></li>
+                            <li class="uk-disabled"><span>...</span></li>
+                            <li><a href="#"><span uk-pagination-next></span></a></li>
+                        </ul>
+
+
+
+                    </div>
+                    <div class="uk-width-expand">
+                        <button class="btn-sidebar-filter"
+                            uk-toggle="target: .sidebar-filter; cls: sidebar-filter-visible">Filter </button>
+                        <div class="sidebar-filter" uk-sticky="offset:30 ; media : @s: bottom: true">
+
+                            <div class="sidebar-filter-contents">
+
+
+                                <h4> Filter By </h4>
+
+                                <ul class="sidebar-filter-list uk-accordion" uk-accordion="multiple: true">
+
+                                    <li class="uk-open">
+                                        <a class="uk-accordion-title" href="#"> Skill Levels </a>
+                                        <div class="uk-accordion-content" aria-hidden="false">
+                                            <div class="uk-form-controls">
+                                                <label>
+                                                    <input class="uk-radio" type="radio" name="radio1">
+                                                    <span class="test"> Beginner <span> (25) </span> </span>
+                                                </label>
+                                                <label>
+                                                    <input class="uk-radio" type="radio" name="radio1">
+                                                    <span class="test"> Entermidate<span> (32) </span></span>
+                                                </label>
+                                                <label>
+                                                    <input class="uk-radio" type="radio" name="radio1">
+                                                    <span class="test"> Expert <span> (12) </span></span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </li>
+
+                                    <li class="uk-open">
+                                        <a class="uk-accordion-title" href="#"> Course type </a>
+                                        <div class="uk-accordion-content" aria-hidden="false">
+                                            <div class="uk-form-controls">
+                                                <label>
+                                                    <input class="uk-radio" type="radio" name="radio2">
+                                                    <span class="test"> Free (42) </span>
+                                                </label>
+                                                <label>
+                                                    <input class="uk-radio" type="radio" name="radio2">
+                                                    <span class="test"> Paid </span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </li>
+
+                                    <li class="uk-open">
+                                        <a class="uk-accordion-title" href="#"> Duration time </a>
+                                        <div class="uk-accordion-content" aria-hidden="false">
+                                            <div class="uk-form-controls">
+                                                <label>
+                                                    <input class="uk-radio" type="radio" name="radio3">
+                                                    <span class="test"> +5 Hourse (23) </span>
+                                                </label>
+                                                <label>
+                                                    <input class="uk-radio" type="radio" name="radio3">
+                                                    <span class="test"> +10 Hourse (12)</span>
+                                                </label>
+                                                <label>
+                                                    <input class="uk-radio" type="radio" name="radio3">
+                                                    <span class="test"> +20 Hourse (5)</span>
+                                                </label>
+                                                <label>
+                                                    <input class="uk-radio" type="radio" name="radio3">
+                                                    <span class="test"> +30 Hourse (2)</span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {%endblock%}

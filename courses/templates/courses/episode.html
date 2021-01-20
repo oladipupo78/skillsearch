@@ -1,0 +1,228 @@
+{% extends 'courses/base.html' %}
+{%load static%}
+    {%block content%}
+        <div class="page-content">
+            <div class="container">
+                <h4> Web Development and Designing Courses </h4>
+                <div class="section-small">
+                        <div class="uk-child-width-1-4@m uk-child-width-1-3@s " uk-grid>
+                            {%for co in c%}
+                                <div>
+                                    <a href="episode-details.html">
+                                        <div class="course-card episode-card animate-this">
+                                            <div class="course-card-thumbnail ">
+                                                <span class="item-tag">{{co.topic}}</span>
+                                                <img src="{{co.image.url}}">
+                                                <span class="play-button-trigger"></span>
+                                            </div>
+                                            <div class="course-card-body">
+                                                <h4 class="mb-0">{{co.name}} </h4>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            {%endfor%}
+                        </div>
+                </div>
+                <h4>Mobile App</h4>
+                <div class="section-small">
+                        <div class="uk-child-width-1-4@m uk-child-width-1-3@s " uk-grid>
+                            {%for mo in m%}
+                                <div>
+                                    <a href="episode-details.html">
+                                        <div class="course-card episode-card animate-this">
+                                            <div class="course-card-thumbnail ">
+                                                <span class="item-tag">{{mo.topic}}</span>
+                                                <img src="{{mo.image.url}}">
+                                            </div>
+                                            <div class="course-card-body">
+                                                <h4 class="mb-0">{{mo.name}} </h4>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            {%endfor%}
+                        </div>
+                </div>
+                <h4> Business </h4>
+                <div class="section-small">
+                        <div class="uk-child-width-1-4@m uk-child-width-1-3@s " uk-grid>
+                            {%for bu in b%}
+                                <div>
+                                    <a href="episode-details.html">
+                                        <div class="course-card episode-card animate-this">
+                                            <div class="course-card-thumbnail ">
+                                                <span class="item-tag">{{bu.topic}}</span>
+                                                <img src="{{bu.image.url}}">
+                                                <span class="play-button-trigger"></span>
+                                            </div>
+                                            <div class="course-card-body">
+                                                <h4 class="mb-0">{{bu.name}} </h4>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            {%endfor%}
+                        </div>
+                </div>
+                <h4> IT Software</h4>
+                <div class="section-small">
+                        <div class="uk-child-width-1-4@m uk-child-width-1-3@s " uk-grid>
+                            {%for i in it%}
+                                <div>
+                                    <a href="episode-details.html">
+                                        <div class="course-card episode-card animate-this">
+                                            <div class="course-card-thumbnail ">
+                                                <span class="item-tag">{{i.topic}}</span>
+                                                <img src="{{i.image.url}}">
+                                                <span class="play-button-trigger"></span>
+                                            </div>
+                                            <div class="course-card-body">
+                                                <h4 class="mb-0">{{i.name}} </h4>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            {%endfor%}
+                        </div>
+                </div>
+                <h4> Marketing </h4>
+                <div class="section-small">
+                        <div class="uk-child-width-1-4@m uk-child-width-1-3@s " uk-grid>
+                            {%for m in ma%}
+                                <div>
+                                    <a href="episode-details.html">
+                                        <div class="course-card episode-card animate-this">
+                                            <div class="course-card-thumbnail ">
+                                                <span class="item-tag">{{m.topic}}</span>
+                                                <img src="{{m.image.url}}">
+                                                <span class="play-button-trigger"></span>
+                                            </div>
+                                            <div class="course-card-body">
+                                                <h4 class="mb-0">{{m.name}} </h4>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            {%endfor%}
+                        </div>
+                </div>
+                <h4>Lifestyle</h4>
+                <div class="section-small">
+                        <div class="uk-child-width-1-4@m uk-child-width-1-3@s " uk-grid>
+                            {%for li in l%}
+                                <div>
+                                    <a href="episode-details.html">
+                                        <div class="course-card episode-card animate-this">
+                                            <div class="course-card-thumbnail ">
+                                                <span class="item-tag">{{li.topic}}</span>
+                                                <img src="{{li.image.url}}">
+                                                <span class="play-button-trigger"></span>
+                                            </div>
+                                            <div class="course-card-body">
+                                                <h4 class="mb-0">{{li.name}} </h4>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            {%endfor%}
+                        </div>
+                </div>
+                <h4> Architecture </h4>
+                <div class="section-small">
+                        <div class="uk-child-width-1-4@m uk-child-width-1-3@s " uk-grid>
+                            {%for ar in a%}
+                                <div>
+                                    <a href="episode-details.html">
+                                        <div class="course-card episode-card animate-this">
+                                            <div class="course-card-thumbnail ">
+                                                <span class="item-tag">{{ar.topic}}</span>
+                                                <img src="{{ar.image.url}}">
+                                                <span class="play-button-trigger"></span>
+                                            </div>
+                                            <div class="course-card-body">
+                                                <h4 class="mb-0">{{ar.name}} </h4>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            {%endfor%}
+                        </div>
+                </div>
+                <h4> Photography </h4>
+                <div class="section-small">
+                        <div class="uk-child-width-1-4@m uk-child-width-1-3@s " uk-grid>
+                            {%for ph in p%}
+                                <div>
+                                    <a href="episode-details.html">
+                                        <div class="course-card episode-card animate-this">
+                                            <div class="course-card-thumbnail ">
+                                                <span class="item-tag">{{ph.topic}}</span>
+                                                <img src="{{ph.image.url}}">
+                                                <span class="play-button-trigger"></span>
+                                            </div>
+                                            <div class="course-card-body">
+                                                <h4 class="mb-0">{{ph.name}} </h4>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            {%endfor%}
+                        </div>
+                </div>
+                <h4> Music </h4>
+                <div class="section-small">
+                        <div class="uk-child-width-1-4@m uk-child-width-1-3@s " uk-grid>
+                            {%for mus in mu%}
+                                <div>
+                                    <a href="episode-details.html">
+                                        <div class="course-card episode-card animate-this">
+                                            <div class="course-card-thumbnail ">
+                                                <span class="item-tag">{{mus.topic}}</span>
+                                                <img src="{{mus.image.url}}">
+                                                <span class="play-button-trigger"></span>
+                                            </div>
+                                            <div class="course-card-body">
+                                                <h4 class="mb-0">{{mus.name}} </h4>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            {%endfor%}
+                        </div>
+                </div>
+                <h4> Ecommerce </h4>
+                <div class="section-small">
+                        <div class="uk-child-width-1-4@m uk-child-width-1-3@s " uk-grid>
+                            {%for eco in e%}
+                                <div>
+                                    <a href="episode-details.html">
+                                        <div class="course-card episode-card animate-this">
+                                            <div class="course-card-thumbnail ">
+                                                <span class="item-tag">{{eco.topic}}</span>
+                                                <img src="{{eco.image.url}}">
+                                                <span class="play-button-trigger"></span>
+                                            </div>
+                                            <div class="course-card-body">
+                                                <h4 class="mb-0">{{eco.name}} </h4>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            {%endfor%}
+                        </div>
+                </div>
+                <!-- pagination menu -->
+                <ul class="uk-pagination my-5 uk-flex-center" uk-margin>
+                    <li><a href="#"><span uk-pagination-previous></span></a></li>
+                    <li class="uk-disabled"><span>...</span></li>
+                    <li><a href="#">4</a></li>
+                    <li class="uk-active"><span>7</span></li>
+                    <li><a href="#">8</a></li>
+                    <li><a href="#">10</a></li>
+                    <li class="uk-disabled"><span>...</span></li>
+                    <li><a href="#"><span uk-pagination-next></span></a></li>
+                </ul>
+            </div>
+        </div>
+    {%endblock%}

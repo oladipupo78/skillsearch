@@ -1,0 +1,86 @@
+{%load static%}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Bio</title>
+        <link rel="stylesheet" href="{% static 'accounts/fonts/material-icon/css/material-design-iconic-font.min.css'%}">
+
+
+    <link rel="stylesheet" href="{% static 'accounts/css/style.css'%}">
+</head>
+<body>
+<form method="POST" class="register-form" id="register-form" action="{%url 'pbio'%}">
+    {% csrf_token %}
+    <section class="signup">
+                <div class="container">
+                    <div class="signup-content">
+                        <div class="signup-form">
+                            <h2 class="form-title">User Bio Form</h2>
+                                <div class="form-group">
+                                    <label><b>Fullname:</b></label><br>
+                                    <br>
+                                    {{bf.Fullname}}
+                                </div>
+                                <div class="form-group">
+                                    <label><b>Email:</b></label><br>
+                                    <br>
+                                    {{bf.Email}}
+                                </div>
+                                <div class="form-group">
+                                    <br>
+                                    {{bf.Bio}}
+                                </div>
+                                <div class="form-group">
+                                    <label><b>Phone:</b></label><br>
+                                    <br>
+                                    {{bf.Phone}}
+                                </div>
+                                <div class="form-group">
+                                    <label for="password"><i class="zmdi zmdi-lock"></i></label>
+                                    <input type="password" name="password" id="password" placeholder="Password"/>
+                                </div>
+                                <div class="form-group">
+                                    <label for="password2"><i class="zmdi zmdi-lock-outline"></i></label>
+                                    <input type="password" name="password2" id="password2" placeholder="Repeat your password"/>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+    <section class="signup">
+                <div class="container">
+                    <div class="signup-content">
+                        <div class="signup-form">
+                            <h2 class="form-title">Instructor Form</h2>
+                                <div class="form-group">
+                                    <label><b>Role:</b></label><br>
+                                    <br>
+                                    {{cf.certification}}
+                                </div>
+                                <div class="form-group">
+                                    <label><b>Person of reference:</b></label><br>
+                                    <br>
+                                    {{ef.reference}}
+                                </div>
+                                <div class="form-group">
+                                    <input type="checkbox" name="agree-term" id="gree-term" class="agree-term" />
+                                    <label for="gree-term" class="label-agree-term"><span><span></span></span>I agree all statements in  <a href="#" class="term-service">Terms of service</a></label>
+                                </div>
+                        </div>
+                        <div class="signup-image">
+                            <img src="{% static 'accounts/images/28837844.jpg'%}" alt="sing up image">
+                            <a href="" class="signup-image-link">I am already member</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+    <div class="form-group form-button">
+        <button type="submit" class="btn btn-primary">Next</button>
+        <button type="reset" class="btn btn-danger">Reset Changes</button>
+    </div>
+    </form>
+
+    <script src="{% static 'accounts/vendor/jquery/jquery.min.js'%}"></script>
+    <script src="{% static 'accounts/js/main.js'%}"></script>
+</body>
+</html>

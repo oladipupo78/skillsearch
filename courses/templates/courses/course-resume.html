@@ -1,0 +1,476 @@
+{% extends 'courses/base.html' %}
+{%load static%}
+    {%block content%}
+        <div class="page-content pt-lg-5">
+
+
+            <div class="course-resume-wrapper topic-1">
+                <div class="container">
+
+                    <div class="uk-grid-large uk-light mt-lg-3" uk-grid>
+
+                        <div class="uk-width-1-2@m">
+                            <div class="course-thumbnail m-lg-4 p-lg-3">
+                                <img src="../assets/images/home-hero.png" alt="">
+                                <a class="play-button-trigger show" href="#trailer-modal" uk-toggle> </a>
+                            </div>
+
+
+                        </div>
+                        <div class="uk-width-1-2@m course-details">
+                            <h2>{{co.name}}</h2>
+                            <p> {{co.description}}
+                            </p>
+
+                            <div class="course-details-info mt-5">
+                                <ul>
+                                    <li>
+                                        <div class="star-rating"><span class="avg"> 4.9 </span> <span
+                                                class="star"></span><span class="star"></span><span
+                                                class="star"></span><span class="star"></span><span class="star"></span>
+                                        </div>
+                                    </li>
+                                    <li> <i class="icon-feather-users"></i> 1200 Enerolled </li>
+                                </ul>
+                            </div>
+                            <div class="course-details-info">
+
+                                <ul>
+                                    <li> Created by <a href="#"> {{co.instructor}} </a> </li>
+                                    <li> Last updated 10/2019</li>
+                                    <li> English </li>
+                                </ul>
+
+                            </div>
+
+                            <div class="uk-flex uk-flex-between uk-flex-middle">
+                                <div class=" uk-visible@m">
+                                    <a hred="#" uk-tooltip="title: Add to your Bookmarks ; pos: top">
+                                        <i class="icon-feather-bookmark icon-small"></i> </a>
+                                    <a hred="#" uk-tooltip="title: Add to wishlist ; pos: top">
+                                        <i class="icon-feather-heart icon-small ml-3 text-danger"></i> </a>
+                                </div>
+                                <form id = "lform" method="POST" action="{%url 'ldirect'%}" >
+                                        {% csrf_token %}
+                                        <input class="uk-input" type="hidden" name="cou" id="cou" value="{{co.name}}">
+                                        <input class="uk-input" type="hidden" name="ins" id="ins" value="{{co.instructor}}">
+                                        <a href="#" class="btn-course-start-2 my-lg-4 mt-3" onclick="document.getElementById('lform').submit()">Start Learning <i class="icon-feather-chevron-right"></i> </a>
+                                    </form>
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+                    <div class="subnav">
+
+                        <ul class="uk-child-width-expand mb-0"
+                            uk-switcher="connect: #course-intro-tab ;animation: uk-animation-slide-right-medium, uk-animation-slide-left-medium"
+                            uk-tab>
+                            <li><a href="#"> <i class="uil-file-alt"></i>
+                                    <span> Description</span> </a>
+                            </li>
+                            <li><a href="#"> <i class="uil-film"></i>
+                                    <span> Curriculum</span></a>
+                            </li>
+                            <li><a href="#"> <i class="uil-comment-lines"></i>
+                                    <span> FAQ</span></a>
+                            </li>
+                            <li><a href="#"> <i class="uil-envelope-info"></i>
+                                    <span> Announcement</span></a>
+                            </li>
+                            <li><a href="#"> <i class="uil-star"></i>
+                                    <span> Reviews</span></a>
+                            </li>
+                        </ul>
+
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="container">
+
+                <div class="uk-grid-large mt-4" uk-grid>
+                    <div class="uk-width-2-3@m">
+                        <ul id="course-intro-tab" class="uk-switcher">
+
+                            <!-- course description -->
+                            <li class="course-description-content">
+
+                                <h4> Description </h4>
+                                <p>{{co.description}}</p>
+
+
+                                <h3> What you’ll learn </h3>
+                                    <div class="uk-child-width-1-2@s" uk-grid>
+                                        <div>
+                                            <ul class="list-2">
+                                                {{co.ToBeLearned}}
+                                            </ul>
+                                        </div>
+
+                                    </div>
+
+
+                                    <h4> Requirements </h4>
+                                    <ul class="list-1">
+                                         {{co.requirements}}
+                                    </ul>
+                            </li>
+
+
+                            <li>
+                                <h4> Course Curriculum </h4>
+
+                                <ul class="course-curriculum" uk-accordion="multiple: true">
+
+                                    <li class="uk-open">
+                                        <a class="uk-accordion-title" href="#"> Html Introduction <span
+                                                class="duration">
+                                                02:42 </span> </a>
+                                        <div class="uk-accordion-content">
+
+                                            <!-- course-video-list -->
+                                            <ul class="course-curriculum-list">
+                                                <li> What is HTML <span> 23 min </span>
+                                                <li> What is a Web page? <span> 23 min </span> </li>
+                                                <li> Your First Web Page <a href="#trailer-modal" uk-toggle> Preview
+                                                    </a> <span> 23 min </span>
+                                                </li>
+                                                <li> Brain Streak <span> 23 min </span> </li>
+                                            </ul>
+
+                                        </div>
+                                    </li>
+
+                                    <li>
+                                        <a class="uk-accordion-title" href="#"> Your First webpage <span
+                                                class="duration">
+                                                02:12 </span> </a>
+                                        <div class="uk-accordion-content">
+
+                                            <!-- course-video-list -->
+                                            <ul class="course-curriculum-list">
+                                                <li> Headings <span> 23 min </span>
+                                                <li> Paragraphs <span> 23 min </span> </li>
+                                                <li> Emphasis and Strong Tag <a href="#trailer-modal" uk-toggle>
+                                                        Preview
+                                                    </a> <span> 23 min
+                                                    </span>
+                                                </li>
+                                                <li> Brain Streak <span> 23 min </span> </li>
+                                                <li> Live Preview Feature <span> 23 min </span> </li>
+                                            </ul>
+
+                                        </div>
+                                    </li>
+
+                                    <li>
+                                        <a class="uk-accordion-title" href="#"> Some Special Tags <span
+                                                class="duration">
+                                                02:12 </span> </a>
+                                        <div class="uk-accordion-content">
+
+                                            <!-- course-video-list -->
+                                            <ul class="course-curriculum-list">
+                                                <li> The paragraph tag <span> 23 min </span> </li>
+                                                <li> The break tag <a href="#trailer-modal" uk-toggle> Preview </a>
+                                                    <span> 23 min </span> </li>
+                                                <li> Headings in HTML <span> 23 min </span> </li>
+                                                <li> Bold, Italics Underline <span> 23 min </span>
+                                                </li>
+                                            </ul>
+
+                                        </div>
+                                    </li>
+
+                                    <li>
+                                        <a class="uk-accordion-title" href="#"> HTML Advanced level <span
+                                                class="duration">
+                                                02:12 </span> </a>
+                                        <div class="uk-accordion-content">
+
+                                            <!-- course-video-list -->
+                                            <ul class="course-curriculum-list">
+                                                <li> Something to Ponder<span> 23 min </span> </li>
+                                                <li> Tables <span> 23 min </span> </li>
+                                                <li> HTML Entities <a href="#trailer-modal" uk-toggle> Preview
+                                                    </a><span> 23 min </span> </li>
+                                                <li> HTML Iframes <span> 23 min </span> </li>
+                                                <li> Some important things <span> 23 min </span> </li>
+                                            </ul>
+
+                                        </div>
+                                    </li>
+
+                                </ul>
+
+                            </li>
+                            <li>
+
+                                <div class="review-summary">
+                                    <h4 class="review-summary-title"> Student feedback </h4>
+                                    <div class="review-summary-container">
+                                        <div class="review-summary-avg">
+                                            <div class="avg-number">
+                                                4.8
+                                            </div>
+                                            <div class="review-star">
+                                                <div class="star-rating"><span class="star"></span><span
+                                                        class="star"></span><span class="star"></span><span
+                                                        class="star"></span><span class="star half"></span></div>
+                                            </div>
+                                            <span>Course Rating</span>
+                                        </div>
+
+
+                                        <div class="review-summary-rating">
+                                            <div class="review-summary-rating-wrap">
+                                                <div class="review-bars">
+                                                    <div class="full_bar">
+                                                        <div class="bar_filler" style="width:95%"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="review-stars">
+                                                    <div class="star-rating"><span class="star"></span><span
+                                                            class="star"></span><span class="star"></span><span
+                                                            class="star"></span><span class="star"></span></div>
+                                                </div>
+                                                <div class="review-avgs">
+                                                    95 %
+                                                </div>
+                                            </div>
+                                            <div class="review-summary-rating-wrap">
+                                                <div class="review-bars">
+                                                    <div class="full_bar">
+                                                        <div class="bar_filler" style="width:80%"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="review-stars">
+                                                    <div class="star-rating"><span class="star"></span><span
+                                                            class="star"></span><span class="star"></span><span
+                                                            class="star"></span><span class="star empty"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="review-avgs">
+                                                    80 %
+                                                </div>
+                                            </div>
+                                            <div class="review-summary-rating-wrap">
+                                                <div class="review-bars">
+                                                    <div class="full_bar">
+                                                        <div class="bar_filler" style="width:60%"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="review-stars">
+                                                    <div class="star-rating"><span class="star"></span><span
+                                                            class="star"></span><span class="star"></span><span
+                                                            class="star empty"></span><span class="star empty"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="review-avgs">
+                                                    60 %
+                                                </div>
+                                            </div>
+                                            <div class="review-summary-rating-wrap">
+                                                <div class="review-bars">
+                                                    <div class="full_bar">
+                                                        <div class="bar_filler" style="width:45%"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="review-stars">
+                                                    <div class="star-rating"><span class="star"></span><span
+                                                            class="star"></span><span class="star empty"></span><span
+                                                            class="star empty"></span><span class="star empty"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="review-avgs">
+                                                    45 %
+                                                </div>
+                                            </div>
+                                            <div class="review-summary-rating-wrap">
+                                                <div class="review-bars">
+                                                    <div class="full_bar">
+                                                        <div class="bar_filler" style="width:25%"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="review-stars">
+                                                    <div class="star-rating"><span class="star"></span><span
+                                                            class="star empty"></span><span
+                                                            class="star empty"></span><span
+                                                            class="star empty"></span><span class="star empty"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="review-avgs">
+                                                    25 %
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <div class="comments">
+                                    <h4>Reviews <span class="comments-amount"> (4610) </span> </h4>
+
+                                    <ul>
+                                        {%for r in re%}
+                                            <li>
+                                                <div class="comment-content">
+                                                    <div class="comment-by">{{r.reviewed_by}}<span>Student</span>
+                                                        <div class="comment-stars">
+                                                            <div class="star-rating"><span class="star"></span><span
+                                                                    class="star"></span><span class="star"></span><span
+                                                                    class="star"></span><span class="star"></span></div>
+                                                        </div>
+                                                    </div>
+                                                    <p>{{r.review}}
+                                                    </p>
+                                                </div>
+
+                                            </li>
+                                        {%endfor%}
+                                    </ul>
+
+                                </div>
+
+                                <div class="comments">
+                                    <h3>Submit Review </h3>
+                                    <ul>
+                                        <li>
+                                            <div class="comment-content">
+                                                    <form method="POST" action="{%url 'submitreview'%}" class="uk-grid-small" uk-grid >
+                                                        {% csrf_token %}
+                                                            <input class="uk-input" type="hidden" name="user" id="user" value="{{user.get_username}}">
+                                                            <input class="uk-input" type="hidden" name="course" id="course" value="{{co.name}}">
+                                                            <input class="uk-input" type="hidden" name="instructor" id="instructor" value="{{co.instructor}}">
+
+                                                        <div class="uk-width-1-1@s">
+                                                            <label class="uk-form-label">Comment</label>
+                                                            <textarea class="uk-textarea" name="review" id="review"
+                                                                placeholder="Enter Your Comments her..."
+                                                                style=" height:160px"></textarea>
+                                                        </div>
+                                                        <div class="comment-stars">
+                                                            <div class="star-rating"><span class="star"></span><span
+                                                                    class="star"></span><span class="star"></span><span
+                                                                    class="star"></span><span class="star"></span></div>
+                                                        </div>
+                                                        <div class="uk-grid-margin">
+                                                            <input type="submit" value="submit" class="button grey">
+                                                        </div>
+                                                    </form>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                            </li>
+
+                        </ul>
+                    </div>
+
+
+                    <!-- sidebar -->
+                    <div class="uk-width-1-3@m">
+
+                        <h4 class="mt-lg-4"> Related Courses</h4>
+                        <div class="uk-child-width-1-1" uk-grid>
+                            <div>
+                                <a href="course-intro.html">
+                                    <div class="course-card">
+                                        <div class="course-card-thumbnail ">
+                                            <img src="../assets/images/course/2.png">
+                                            <span class="play-button-trigger"></span>
+                                        </div>
+                                        <div class="course-card-body">
+                                            <div class="course-card-info">
+                                                <div>
+                                                    <span class="catagroy">Angular</span>
+                                                </div>
+                                                <div>
+                                                    <i class="icon-feather-bookmark icon-small"></i>
+                                                </div>
+                                            </div>
+
+                                            <h4>Learn Angular Fundamentals </h4>
+                                            <p> Learn how to build and launch React web applications using React </p>
+                                            <div class="course-card-footer">
+                                                <h5> <i class="icon-feather-film"></i> 14 Lectures </h5>
+                                                <h5> <i class="icon-feather-clock"></i> 55 Hours </h5>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </a>
+
+                            </div>
+                            <div>
+                                <a href="course-intro.html">
+                                    <div class="course-card">
+                                        <div class="course-card-thumbnail ">
+                                            <img src="../assets/images/course/3.png">
+                                            <span class="play-button-trigger"></span>
+                                        </div>
+                                        <div class="course-card-body">
+                                            <div class="course-card-info">
+                                                <div>
+                                                    <span class="catagroy">JavaScript</span>
+                                                </div>
+                                                <div>
+                                                    <i class="icon-feather-bookmark icon-small"></i>
+                                                </div>
+                                            </div>
+                                            <h4>The Complete JavaScript From </h4>
+                                            <p> JavaScript is how you build interactivity on the web...
+                                                learn </p>
+                                            <div class="course-card-footer">
+                                                <h5> <i class="icon-feather-film"></i> 12 Lectures </h5>
+                                                <h5> <i class="icon-feather-clock"></i> 25 Hours </h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div>
+                                <a href="course-intro.html">
+                                    <div class="course-card">
+                                        <div class="course-card-thumbnail ">
+                                            <img src="../assets/images/course/1.png">
+                                            <span class="play-button-trigger"></span>
+                                        </div>
+                                        <div class="course-card-body">
+                                            <div class="course-card-info">
+                                                <div>
+                                                    <span class="catagroy">HTML</span>
+                                                </div>
+                                                <div>
+                                                    <i class="icon-feather-bookmark icon-small"></i>
+                                                </div>
+                                            </div>
+
+                                            <h4>Ultimate Web Developer Course </h4>
+                                            <p> HTML is the building blocks of the web. It gives pages structure and ..
+                                            </p>
+
+                                            <div class="course-card-footer">
+                                                <h5> <i class="icon-feather-film"></i> 33 Lectures </h5>
+                                                <h5> <i class="icon-feather-clock"></i> 26 Hours </h5>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </a>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    {%endblock%}
